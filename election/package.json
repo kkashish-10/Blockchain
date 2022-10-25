@@ -1,5 +1,5 @@
 {
-  "name": "elnection",
+  "name": "election",
   "version": "1.0.0",
   "main": "truffle.js",
   "directories": {
