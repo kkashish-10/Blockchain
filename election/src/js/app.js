@@ -36,9 +36,9 @@ App = {
   },
 
   render: function () {
-    var electionInstance;
-    var loader = $("#loader");
-    var content = $("#content");
+    let electionInstance;
+    let loader = $("#loader");
+    let content = $("#content");
 
     loader.show();
     content.hide();
@@ -57,36 +57,39 @@ App = {
         electionInstance = instance;
         return electionInstance.candidatesCount();
       })
-      .then(function (candidatesCount) {
-        var candidatesResults = $("#candidatesResults");
+      .then(async function (candidatesCount) {
+        let candidatesResults = $("#candidatesResults");
         candidatesResults.empty();
+        let candidatesResContent = "";
 
-        var candidatesSelect = $("#candidatesSelect");
+        let candidatesSelect = $("#candidatesSelect");
         candidatesSelect.empty();
+        let candidatesSelectContent = "";
 
-        for (var i = 1; i <= candidatesCount; i++) {
-          electionInstance.candidates(i).then(function (candidate) {
-            var id = candidate[0];
-            var name = candidate[1];
-            var voteCount = candidate[2];
+        for (let i = 1; i <= candidatesCount; i++) {
+          let candidate = await electionInstance.candidates(i);
+          let id = candidate[0];
+          let name = candidate[1];
+          let voteCount = candidate[2];
 
-            // Render candidate Result
-            var candidateTemplate =
-              "<tr><th>" +
-              id +
-              "</th><td>" +
-              name +
-              "</td><td>" +
-              voteCount +
-              "</td></tr>";
-            candidatesResults.append(candidateTemplate);
+          // Render candidate Result
+          let candidateTemplate =
+            "<tr><th>" +
+            id +
+            "</th><td>" +
+            name +
+            "</td><td>" +
+            voteCount +
+            "</td></tr>";
+          candidatesResContent += candidateTemplate;
 
-            // Render candidate ballot option
-            var candidateOption =
-              "<option value='" + id + "' >" + name + "</ option>";
-            candidatesSelect.append(candidateOption);
-          });
+          // Render candidate ballot option
+          let candidateOption =
+            "<option value='" + id + "' >" + name + "</ option>";
+          candidatesSelectContent += candidateOption;
         }
+        candidatesResults.html(candidatesResContent);
+        candidatesSelect.html(candidatesSelectContent);
         return electionInstance.voters(App.account);
       })
       .then(function (hasVoted) {

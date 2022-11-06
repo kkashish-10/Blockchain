@@ -53,7 +53,7 @@
   "sourceMap": "66:352:1:-;;;113:10;90:33;;;;;;;;;;;;;;;;;;;;66:352;8:9:-1;5:2;;;30:1;27;20:12;5:2;66:352:1;;;;;;;",
   "deployedSourceMap": "66:352:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;66:352:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;127:36;;;:::i;:::-;;;;;;;;;;;;;;;;;;;90:33;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;313:103;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;313:103:1;;;;;;;;;;;;;;;;;:::i;:::-;;127:36;;;;:::o;90:33::-;;;;;;;;;;;;;:::o;313:103::-;225:5;;;;;;;;;;;211:19;;:10;:19;;;196:101;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;402:9;375:24;:36;;;;313:103;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\ncontract Migrations {\n  address public owner = msg.sender;\n  uint public last_completed_migration;\n\n  modifier restricted() {\n    require(\n      msg.sender == owner,\n      \"This function is restricted to the contract's owner\"\n    );\n    _;\n  }\n\n  function setCompleted(uint completed) public restricted {\n    last_completed_migration = completed;\n  }\n}\n",
-  "sourcePath": "E:\\github\\blockchain\\election\\contracts\\Migrations.sol",
+  "sourcePath": "/Users/mukulsingh/github/blockchain-kashish/election/contracts/Migrations.sol",
   "ast": {
     "absolutePath": "project:/contracts/Migrations.sol",
     "exportedSymbols": {
@@ -915,12 +915,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x9574a6bB9a5D7D6c2B55ED5C805597e8310cF784",
-      "transactionHash": "0x9a49acb78b77e8810066a0c0faf34d41edc95078f58b9772963c9f4a42fd28b2"
+      "address": "0xD9999Fb0BB49B4D75E6236B402a5411a656C47Cd",
+      "transactionHash": "0x68bdb37d3bb6847f44e89f9eb3aec18ea07b3c446168a476105a4130062ebee3"
     }
   },
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-10-12T13:20:06.904Z",
+  "updatedAt": "2022-11-06T19:06:39.589Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

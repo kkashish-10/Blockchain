@@ -109,7 +109,7 @@
   "sourceMap": "66:1214:0:-;;;550:92;8:9:-1;5:2;;;30:1;27;20:12;5:2;550:92:0;581:23;;;;;;;;;;;;;;;;;;:12;;;:23;;:::i;:::-;614:21;;;;;;;;;;;;;;;;;;:12;;;:21;;:::i;:::-;66:1214;;383:161;444:15;;:17;;;;;;;;;;;;;501:36;;;;;;;;511:15;;501:36;;;;528:5;501:36;;;;535:1;501:36;;;471:10;:27;482:15;;471:27;;;;;;;;;;;:66;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;383:161;:::o;66:1214::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
   "deployedSourceMap": "66:1214:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;66:1214:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;736:489;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;736:489:0;;;;;;;;;;;;;;;;;:::i;:::-;;346:30;;;:::i;:::-;;;;;;;;;;;;;;;;;;;258:47;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;258:47:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;258:47:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;691:38;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;691:38:0;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;736:489;850:6;:18;857:10;850:18;;;;;;;;;;;;;;;;;;;;;;;;;849:19;841:28;;;;;;949:1;934:12;:16;:51;;;;;970:15;;954:12;:31;;934:51;926:60;;;;;;1059:4;1038:6;:18;1045:10;1038:18;;;;;;;;;;;;;;;;:25;;;;;;;;;;;;;;;;;;1112:10;:24;1123:12;1112:24;;;;;;;;;;;:34;;;:36;;;;;;;;;;;;;1205:12;1194:24;;;;;;;;;;736:489;:::o;346:30::-;;;;:::o;258:47::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;691:38::-;;;;;;;;;;;;;;;;;;;;;;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\ncontract Election {\n    // Model for a candidate\n    struct Candidate {\n        uint256 id;\n        string name;\n        uint256 voteCount;\n    }\n\n    // Read/Write mapping for candidates\n    mapping(uint256 => Candidate) public candidates;\n\n    // store number of candidates\n    uint256 public candidatesCount;\n\n    function addCandidate(string memory _name) private {\n        candidatesCount++;\n        candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);\n    }\n\n    constructor() public {\n        addCandidate(\"Kashish\");\n        addCandidate(\"Mukul\");\n    }\n\n    //mapping for accounts that have voted\n    mapping(address => bool) public voters;\n\n    function vote(uint256 _candidateID) public {\n        // require that a voter hasn't voted before\n        require(!voters[msg.sender]); // doubt \n\n        //require a valid candidate\n        require(_candidateID > 0 && _candidateID <= candidatesCount);\n\n        // mark that the voter has voted\n        voters[msg.sender] = true;\n\n        //update candidate vote count\n        candidates[_candidateID].voteCount++;\n\n        //trigger voted event\n        emit votedEvent(_candidateID);\n    }\n\n    event votedEvent(uint256 indexed _candidateID);\n}",
-  "sourcePath": "E:\\github\\blockchain\\election\\contracts\\Election.sol",
+  "sourcePath": "/Users/mukulsingh/github/blockchain-kashish/election/contracts/Election.sol",
   "ast": {
     "absolutePath": "project:/contracts/Election.sol",
     "exportedSymbols": {
@@ -792,7 +792,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 143,
+                              "referencedDeclaration": 110,
                               "src": "857:3:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -841,10 +841,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        146,
-                        147
+                        113,
+                        114
                       ],
-                      "referencedDeclaration": 146,
+                      "referencedDeclaration": 113,
                       "src": "841:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -999,10 +999,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        146,
-                        147
+                        113,
+                        114
                       ],
-                      "referencedDeclaration": 146,
+                      "referencedDeclaration": 113,
                       "src": "926:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1059,7 +1059,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 143,
+                          "referencedDeclaration": 110,
                           "src": "1045:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -2140,10 +2140,10 @@
                                 }
                               ],
                               "overloadedDeclarations": [
-                                146,
-                                147
+                                113,
+                                114
                               ],
-                              "referencedDeclaration": 146,
+                              "referencedDeclaration": 113,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -2205,7 +2205,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 143,
+                                          "referencedDeclaration": 110,
                                           "type": "msg",
                                           "value": "msg"
                                         },
@@ -2264,10 +2264,10 @@
                                 }
                               ],
                               "overloadedDeclarations": [
-                                146,
-                                147
+                                113,
+                                114
                               ],
-                              "referencedDeclaration": 146,
+                              "referencedDeclaration": 113,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -2459,7 +2459,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 143,
+                                      "referencedDeclaration": 110,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -2722,12 +2722,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x2d7aF8340FCBcA232D3705Be69638DB6E6093a79",
-      "transactionHash": "0x0c10bf82fada83934f47bfdf198f9ea4010a5d97a7eafe49c4b82625dff1b7eb"
+      "address": "0x310A926f9B268838A9F86a300Ac572ab5C715eb0",
+      "transactionHash": "0x17f45736959d53cf01a0d939fb8306f981f5d5f16f928e3a9df81ef685d50217"
     }
   },
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-10-12T13:20:06.901Z",
+  "updatedAt": "2022-11-06T19:06:39.585Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
