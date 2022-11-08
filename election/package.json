@@ -31,7 +31,7 @@
     "async-each-series": "^0.1.1",
     "async-limiter": "^1.0.0",
     "atob": "^2.1.2",
-    "axios": "^0.17.1",
+    "axios": "^0.21.2",
     "backo2": "^1.0.2",
     "balanced-match": "^1.0.0",
     "base": "^0.11.2",
